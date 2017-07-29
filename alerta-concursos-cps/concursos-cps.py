@@ -6,7 +6,7 @@ Created on Mon May 29 10:30:20 2017
 @author: diegocavalca
 """
 def main():
-    import requests, json, os, sys
+    import requests, json, os, sys, platform
     import pandas as pd
     from bs4 import BeautifulSoup
     from datetime import datetime
@@ -57,6 +57,8 @@ def main():
                                     'CodUnidade'  : itens[1].find('font').get_text(), 
                                     'Unidade'     : itens[2].find('font').get_text(),
                                     'Cidade'      : cidade,
+                                    'Distancia'   : distancia,
+                                    'FimInscricao': itens[5].find('font').get_text(),
                                     'Edital'      : link 
                                  })
     
@@ -104,6 +106,8 @@ def main():
                                     'CodUnidade': itens[1].find('font').get_text(), 
                                     'Unidade'   : itens[2].find('font').get_text(),
                                     'Cidade'    : cidade,
+                                    'Distancia'   : distancia,
+                                    'FimInscricao': itens[5].find('font').get_text(),
                                     'Edital'    : link  })
     
     ###############################################################################
@@ -149,21 +153,28 @@ def main():
                                     'CodUnidade'  : itens[1].find('font').get_text(), 
                                     'Unidade'     : itens[2].find('font').get_text(),
                                     'Cidade'      : cidade,
+                                    'Distancia'   : distancia,
+                                    'FimInscricao': itens[5].find('font').get_text(),
                                     'Edital'      : link 
                                  })
         
     # Salvando concursos em arquivo CSV
     print('Salvando dados obtidos...')
     abspath = os.path.abspath(__file__)
-    os.chdir(os.path.dirname(abspath)+'/alerta-concursos-cps')
+    os.chdir(os.path.dirname(abspath)+'/historico-concursos')
     now = datetime.now()
-    arquivo = str(now.year)+'-'+(str(now.month) if now.month >= 10 else '0'+str(now.month))+'-'+str(now.day)+'.xls'
+    arquivo = str(now.year)+'-'+(str(now.month) if now.month >= 10 else '0'+str(now.month))+'-'+str(now.day)+'_dist-'+str(params['maxDist'])+'.xls'
     if os.path.isfile(arquivo):
         os.remove(arquivo)
-    df = pd.DataFrame(concursos)
+    df = pd.DataFrame(concursos, columns=['TipoUnidade', 'Tipo', 'CodUnidade', 'Unidade', 'Cidade', 'Distancia', 'FimInscricao', 'Edital'])
     df.to_excel(arquivo)
     
-    print('Concursos analisados e salvo com sucesso no arquivo '+arquivo+'!...')
+    print('Concursos analisados e salvo com sucesso no arquivo '+arquivo+'!')
+
+    if platform.system() == 'Windows':
+        os.system("start " + arquivo)
+    else:
+        os.system("open " + arquivo)
 
 if __name__ == '__main__':
     main()

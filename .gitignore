@@ -1,6 +1,4 @@
 
-*.command
-
 alerta-concursos-cps/buscar-concursos-cps.command
 
-alerta-concursos-cps/buscar-concursos-cps.command
+alerta-concursos-cps/concursos/

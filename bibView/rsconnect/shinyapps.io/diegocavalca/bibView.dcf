@@ -1,0 +1,12 @@
+name: bibView
+title: bibView
+username:
+account: diegocavalca
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 196826
+bundleId: 1061152
+url: https://diegocavalca.shinyapps.io/bibView/
+when: 1509974830.88755
+asMultiple: FALSE
+asStatic: FALSE

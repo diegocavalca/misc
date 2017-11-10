@@ -5,8 +5,8 @@ account: diegocavalca
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 196826
-bundleId: 1061152
+bundleId: 1069232
 url: https://diegocavalca.shinyapps.io/bibView/
-when: 1509974830.88755
+when: 1510337300.42397
 asMultiple: FALSE
 asStatic: FALSE

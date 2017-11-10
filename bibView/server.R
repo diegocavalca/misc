@@ -15,29 +15,32 @@ library(knitr)
 
 function(input, output) {
   
-    output$analysis<- renderUI({
+    output$analysis <- renderUI({
       HTML("<h1>BibView - An&aacute;lise Bibliom&eacute;trica</h1>
-           <hr/>
+            <hr/>
            <p>O BibView é uma ferramenta online que permite realizar análise bibliométrica dos dados de publicações científicas obtidas na base de dados <a href='http://www.scopus.com' target='_blank'>Scopus</a> utilizando o R e o pacote Bibliometrix.</p>
            
-           <p>Além disso, é exibido o workflow básico para a realização deste tipo de análise, a qual pode ser feita localmente, conforme apresentado em aula.</p>
+           <p>Este sistema foi desenvolvido baseado na aula 'Análise Bibliométrica com R', apresentada por <a href='https://www.linkedin.com/in/diegocavalca/' target='_blank'>Diego Cavalca</a> para a turma do Mestrado em Engenharia Urbana, UFSCar/São Carlos. Mais informações podem ser obtidas <a href='https://github.com/diegocavalca/data-science/tree/master/bibliometric-analysis' target='_blank'>aqui</a>.</p>
            
-           <p>A preparação do ambiente (instalação do R, RStudio e Bibliometrix) e a obtenção dos dados seguirão conforme discutido previamente. Mais informações sobre estas etapas podem ser obtidas <a href='http://github.com/diegocavalca/data-science' target='_blank'>aqui</a>.</p>
-           
-           <p>Este pipeline foi desenvolvido baseado no <a href='http://htmlpreview.github.io/?https://github.com/massimoaria/bibliometrix/master/vignettes/bibliometrix-vignette.html' target='_blank'>material oficial do Bibliometrix</a>.</p>
+           <p>O pipeline do BibView foi desenvolvido com base no <a href='http://htmlpreview.github.io/?https://github.com/massimoaria/bibliometrix/master/vignettes/bibliometrix-vignette.html' target='_blank'>material oficial do Bibliometrix</a>.</p>
            
            <p>Para começar, no menu ao lado:
            <ul><li>Selecione o arquivo .bib referente ao seu levantamento;</li>
            <li>Ajuste o número K de resultados por indicador;</li>
            <li>Após concluído o upload, clique no botão 'Analisar dados e Gerar relatório'.</li></ul></p>
-
-           <h2>Referências</h2>
+           
+           <h2>Créditos</h2>
            <hr/>
-           <p>Se você for utilizar os dados gerados pelo BibView em sua pesquisa, por favor entre em contato através do email <a href='mailto:diego.cavalca@dc.ufscar.br' target='_blank'>diego.cavalca@dc.ufscar.br</a>.</p>
-           <p>Desenvolvido e mantido por <a href='https://www.linkedin.com/in/diegocavalca/' target='_blank'>Diego Cavalca</a>.</p>")
-    })
+           <p>Desenvolvido e mantido por <a href='https://www.linkedin.com/in/diegocavalca/' target='_blank'>Diego Cavalca</a>.</p>
+           <p><u>AVISO IMPORTANTE:</u> Se você for utilizar os resultados gerados pelo BibView em seu trabalho, por favor considere entrar em contato através do email <a href='mailto:diego.cavalca@dc.ufscar.br' target='_blank'>diego.cavalca@dc.ufscar.br</a> ou através do <a href='https://www.linkedin.com/in/diegocavalca/' target='_blank'>LinkedIn</a>.</p>
+           ")    
+      })  
   
     observeEvent(input$do, {
+      
+      output$home <- renderUI({
+        HTML("content")
+      })
       
       # Make sure requirements are met
       req(input$fileBib)
@@ -76,6 +79,9 @@ function(input, output) {
       output$analysis <- renderUI({
         includeHTML(content)
       })
+      
+      #tags$head(tags$link(rel = "stylesheet", type = "text/css", 
+      #                    href = "https://bootswatch.com/4/cerulean/bootstrap.min.css"))
       
       removeModal()
     })

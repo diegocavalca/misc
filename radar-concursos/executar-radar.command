@@ -1,2 +1,0 @@
-python -W ignore /Volumes/Toshiba/Github/misc/radar-concursos/radar.py 200 AIzaSyBdMSPEjHzEbl5vVXSYWXT9ChXII32Uc0E diegoluizcavalca@gmail.com robot@diegocavalca.com mail.diegocavalca.com 587 1234mudar.
-exit

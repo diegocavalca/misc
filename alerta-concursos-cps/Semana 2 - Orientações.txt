@@ -1,0 +1,9 @@
+Nesta semana foram abordados os assuntos:
+
+- Árvore de Regressão com constantes nas folhas no contexto de AM clássico 
+
+O objetivo dessa apresentação é conhecer um algoritmo indutor de modelo de regressão baseado em árvore, para AM clássico. O algoritmo apresentado se assemelha muito ao algoritmo de indução de árvore de decisão.
+
+- Árvore de Hoeffding
+
+Esta é uma árvore de decisão gerada por um algoritmo para fluxo de dados, definida como extensão da árvore clássica (C4.5). Foi proposta em 2000 e tem importância por ter sido um trabalho pioneiro que influenciou dezenas de outros modelos que surgiram depois.
